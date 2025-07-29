@@ -1,0 +1,1103 @@
+;[#Field : default]
+;	
+;	
+;	Add		: Tooltip	: $$DescName
+;	
+;[#Form: SalesColor]
+; 
+;	Option 			: Training_Fo  : @@IsSales 
+;	
+;
+;[!Form: Training_Fo] 
+;	
+;	Delete			: Print			:  Printed Invoice
+;	Add 			: print 		:  Training_R_2
+; 
+;[Report: Training_R_2]
+;
+;	Title			: "M-"	
+;	Use				: Printed Invoice
+;	Delete			: Form
+;	Add				: Form		: Training_Fo_2
+;	Object			: Voucher	: ##VoucherID
+;	Set 			: SVPrintOrientation: $$SysName:Portrai
+;	
+;[Form: Training_Fo_2]
+;
+;;[#Field: default]
+;	
+;	Add		: Tooltip	: $$DescName
+;	
+;[#Form: SalesColor]
+; 
+;	Option 			: United Agancy  : @@IsSales 
+;
+;[!Form: UnitedAgancy]
+;	
+;	Delete			: Print			: Printed Invoice
+;	Add 			: print 		:  United AgancyReport
+; 
+;[Report: UnitedAgancyReport]
+;
+;	Title			: "Tax Invoice vihnsu"		
+;	Use				: Printed Invoice
+;	Delete			: Form
+;	Add				: Form		: United AgancyForm
+;	Object			: Voucher	: ##VoucherID
+;	Set 			: SVPrintOrientation: $$SysName:Portrait
+;	
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;[Form: United AgancyForm]
+;
+;	Use			: GST InvoiceAnalysis
+
+
+[#Field : default]
+	
+	Add		: Tooltip	: $$DescName
+	
+[#Form: SalesColor]
+ 
+	Option 			: Fromone  : @@IsSales 
+	
+
+[!Form: Fromone] 
+	
+	Delete			: Print			:  Printed Invoice
+	Add 			: print 		:  MainReport
+ 
+[Report: MainReport]
+
+	Title			: "M-"	
+	Use				: Printed Invoice
+	Delete			: Form
+	Add				: Form		: M shipping form
+	Object			: Voucher	: ##VoucherID
+	Set 			: SVPrintOrientation: $$SysName:Portrai
+	
+[Form: M shipping form]
+	
+	Top Part	: Top_Part_P01,Top_Part_P02,Top_Part_P3,Top_Part_P4,Top_Part_P5,Top_Part_P6
+	Bottom Part	: Bottom_Part_p1;,Bottom_part_P2
+;	Part		: Mid_Part_P01
+
+;    Height			: 100% Page
+;	Width			: 100% Page
+;		
+;	Space Top		: 5 mms
+;	Space Right		: 10 mms
+;	Space Bottom	: 5 mms
+;	Space Left		: 10 mms
+
+	
+[Part:Top_Part_P01]
+	
+	Height		: 5 % Page
+	Width		: 100 % Page
+	Border		: thin box
+	Line		: Top_Part_P01_L1
+	Vertical	: Yes
+[Line: Top_Part_P01_L1]
+	
+	Space Top	: 1
+	Field		: Top_Part_P01_L1_Fi1
+	
+[Field: Top_Part_P01_L1_Fi1]
+	
+	Set as		: "TAX INVOICE"
+	Align		: Center
+	Full Width	: Yes
+	Style		: Extra Large Bold
+	
+[Part: Top_Part_P02]
+	
+	Height		: 20 % Page
+	Width		: 100 % Page
+	Border		: thin box
+	Line		: Top_Part_P02_L1,Top_Part_P02_L2,Top_Part_P02_L3,Top_Part_P02_L4,Top_Part_P02_L5,Top_Part_P02_L6
+					
+[Line: Top_Part_P02_L1]
+	
+	Space Top	: 1
+	Field		: Top_Part_P02_L1_Fi1
+	
+[Field: Top_Part_P02_L1_Fi1]
+	
+	Set as		: $Name:Company:##svCurrentCompany;"JAS Electranic Pvt Ltd."
+	Style		: large bold	
+	Align		: Center
+	Full Width	: Yes
+	
+[Line: Top_Part_P02_L2]
+	
+	Space Top	: 1
+	Field		: Top_Part_P02_L2_Fi2
+	
+[Field: Top_Part_P02_L2_Fi2]
+	
+	Set as		: "Sales & Service & Spare"
+	Align		: Center
+	Full Width	: Yes
+	
+[Line: Top_Part_P02_L3]
+	
+	Space Top	: 1
+	Field		: Top_Part_P02_L3_Fi3
+	
+[Field: Top_Part_P02_L3_Fi3]
+	
+	Set as		: "LCD,LED,CTV"
+	Align		: Center
+	Full Width	: Yes
+	
+[Line: Top_Part_P02_L4]
+	
+	Space Top	: 1
+	Field		:Top_part_P02_L4_Fi4
+	
+[Field: Top_part_P02_L4_Fi4]
+	
+	Set as		: "Bazzer Veethi, Vellimedupettai"
+	Align		: Center
+	Full Width	: Yes
+	
+[Line: Top_Part_P02_L5]
+	
+	Space Top	: 1
+	Field		: Top_Part_P02_L5_Fi5
+	
+[Field:Top_Part_P02_L5_Fi5]
+	
+	Set as		: "Thindivanam Taluka-604207 Vpm ,Dt Contact No-90259 50464"
+	Align		: Center
+	Full Width	: Yes
+	
+[Line: Top_Part_P02_L6]
+	
+	Space Top	: 1
+	Field		: Top_Part_P02_L6_Fi6
+	Border		: thin botom
+	
+[Field: Top_Part_P02_L6_Fi6]
+	
+	Set as		: "GST,No-33ANVPB4000Q1Z1"
+	Align		: Center
+	Full Width	: Yes
+	
+[Part: Top_Part_P3]
+	
+	;Right Part	: Top_Part_RP_P3
+	Left Part	: Top_Part_LP1_P3,Top_Part_LP2_P3,;Top_Part_LP3_P3
+	Right Part	: Top_Part_RP1_P3,Top_Part_RP2_P3
+	
+[Part: Top_Part_LP2_P3]
+	
+	Height		: 4 % Page
+	Width		: 30 % Page
+	Border		: thin box
+	Line		: Top_Part_LP2_P3_L1
+	
+[Line: Top_Part_LP2_P3_L1]
+	
+	Space Top	: 1
+	Field		: Top_Part_LP2_P3_L1_Fi1
+	
+[Field: Top_Part_LP2_P3_L1_Fi1]
+	
+	Set as		: "SHIPYARD"
+	Align		: Left
+	Full Width	: Yes
+	Style		: Normal Bold
+	
+[Part: Top_Part_LP1_P3]
+	
+	Height		: 4 % Page
+	Width		: 40 % Page
+	Border		: thin box
+	Line		: Top_Part_LP1_P3_L1
+	
+[Line: Top_Part_LP1_P3_L1]
+	
+	Space Top	: 1
+	Field		: Top_Part_LP1_P3_L1_Fi1
+	
+[Field: Top_Part_LP1_P3_L1_Fi1]
+	
+	Set as		: "BUYER"
+	Align		: Left
+	Full Width	: Yes
+	Style		: Normal Bold
+	
+
+	
+[Part: Top_Part_RP1_P3]
+	
+	Height		: 4 % Page 
+	Width		: 15 % Page
+	Border		: thin box
+	Line		: Top_Part_RP1_P3_L1
+	
+[Line: Top_Part_RP1_P3_L1]
+	
+	Space Top	: 1
+	Field		: Top_Part_RP1_P3_L1_Fi1
+	
+[Field: Top_Part_RP1_P3_L1_Fi1]
+	
+	Set as		: "Invoice No"
+	Align		: Center
+	Full Width	: Yes
+	Style		: Normal Bold
+	
+[Part: Top_Part_RP2_P3]
+	
+	Height		: 4 % Page
+	Width		: 15 % Page
+	Border		: thin box
+	Line		: Top_Part_RP2_P3_L1
+	
+[Line: Top_Part_RP2_P3_L1]
+	
+	Space Top	: 1
+	Field		: Top_Part_RP2_P3_L1_Fi1
+	
+[Field: Top_Part_RP2_P3_L1_Fi1]
+	
+	Set as		: " Date"
+	Align		: Center
+	Full Width	: Yes
+	Style		: Normal Bold
+	
+[Part: Top_Part_P4]
+	
+	Left Part	: Top_Part_LP1_P4,Top_Part_LP2_P4
+	Right Part	: Top_Part_RP1_P04,Top_Part_RP2_P4
+;	Left Part	: Top_Part_LP3_P4
+[Part: Top_Part_LP1_P4]
+	
+	Height		: 11 % Page
+	Width		: 40 % Page
+	Border		: thin box
+	Line		: Top_Part_LP1_P4_L1,Top_Part_LP1_P4_L2,Top_Part_LP1_P4_L3,Top_Part_LP1_P4_L4,Top_Part_LP1_P4_L5
+	
+[Line: Top_Part_LP1_P4_L1]
+	
+	Space Top	: 1
+	Field		: Top_Part_LP1_P4_Fi1
+	
+[Field: Top_Part_LP1_P4_Fi1]
+	
+	Set as		: "HEMA CHANDRAN D"
+	Align		: Left
+	Full Width	: Yes
+	Style		: Normal Bold
+	
+[Line: Top_Part_LP1_P4_L2]
+
+	Space Top	: 1
+	Field		: Top_Part_LP1_P4_L2_Fi2
+	
+[Field: Top_Part_LP1_P4_L2_Fi2]
+	
+	Set as		: "121 Nagavaram, Vadasiruvallur"
+	Align		: Left
+	Full Width	: Yes
+	
+
+[Line: Top_Part_LP1_P4_L3]
+	
+	Space Top	: 1
+	Field		: Top_Part_LP1_P4_L3_Fi3
+	
+[Field: Top_Part_LP1_P4_L3_Fi3]
+	
+	Set as		: "Vellimedupettai (Post), villupuram (DT), "
+	Align		: Left
+	Full Width	: Yes
+	
+[Line: Top_Part_LP1_P4_L4]
+	
+	Space Top	: 1
+	Field		: Top_Part_LP1_P4_L4_Fi4 
+	
+[Field: Top_Part_LP1_P4_L4_Fi4]
+		
+	Set as		: "Thindivanam Taluka"
+	Align		: Left
+	Full Width	: Yes
+	
+[Line: Top_Part_LP1_P4_L5]
+		
+	Space Top	: 1
+	Field		: Top_Part_LP1_P4_L5_Fi1
+	
+[Field: Top_Part_LP1_P4_L5_Fi1]
+	
+	Set as		: "GST,No-33ANVPB4000Q1Z1"
+	Align		: Left
+	Border		: thin top
+	Full Width	: Yes
+	
+[Part: Top_Part_LP2_P4]
+	
+	Height		: 11 % Page
+	Width		: 30 % Page
+	Border		: thin box
+	Line		: Top_Part_LP2_P4_L1,Top_Part_LP2_P4_L2,Top_part_LP2_P4_L3,Top_Part_LP2_P4_L4
+	
+[Line: Top_Part_LP2_P4_L1]
+
+	Space Top	: 1
+	Field		: Top_Part_LP2_P4_L1_Fi1
+	
+[Field: Top_Part_LP2_P4_L1_Fi1]
+	
+	Set as		: "HEAM CHANDRAN D"
+	Align		: Left
+	Full Width	: Yes
+	Style		: Normal Bold
+	
+[Line: Top_Part_LP2_P4_L2]
+	
+	Space Top	: 1
+	Field		: Top_Part_LP2_P4_L2_Fi2
+	
+[Field: Top_Part_LP2_P4_L2_Fi2]
+
+	Set as		: "121 Nagavaram, Vadasiruvallur"
+	Align		: Left
+	Full Width	: Yes
+	
+[Line: Top_part_LP2_P4_L3]
+	
+	Space Top	: 1
+	Field		: Top_Part_LP2_P4_L3_Fi3
+	
+[Field: Top_Part_LP2_P4_L3_Fi3]
+	
+	Set as		: "Vellimedupettai (Post), villupuram (DT),"
+	Align		: Left
+	Full Width	: Yes
+	
+[Line: Top_Part_LP2_P4_L4]
+	
+	Space Top	: 1
+	Field		: Top_Part_LP2_P4_L4_Fi4
+	
+[Field: Top_Part_LP2_P4_L4_Fi4]
+	
+	Set as		: "Thindivanam Taluka"
+	Align		: Left
+	Full Width	: Yes
+	
+[Part: Top_Part_RP1_P04]
+	
+	Height		: 11 % Page
+	Width		: 15 % Page
+	Border		: thin box
+	Line		: Top_Part_RP1_P04_L1
+	
+[Line:Top_Part_RP1_P04_L1]
+	
+	Space Top	: 3
+	Field		: Top_Part_RP1_P04_L1_Fi1
+	
+[Field: Top_Part_RP1_P04_L1_Fi1]
+	
+	Set as		: "BMW968751"
+	Align		: Center
+	Full Width	: Yes
+	
+[Part: Top_Part_RP2_P4]
+	
+	Height		: 11 % Page
+	Width		: 15 % Page
+	Border		: thin box
+	Line		: Top_Part_RP1_P4_L1
+	
+[Line: Top_Part_RP1_P4_L1]
+	
+	Space Top	: 3
+	Field		: Top_Part_RP2_P4_L1_Fi1
+	
+[Field: Top_Part_RP2_P4_L1_Fi1]
+	
+	Set as		: "19-JUL-25"
+	Align		: Center
+	Full Width	: Yes
+	
+[Part: Top_Part_P5]
+	
+	Left Part	: Top_Part_P5_LP1,Top_Part_P5_LP2,Top_Part_P05_LP3
+	Right Part	: Top_Part_P5_RP1,Top_Part_P5_RP2,Top_Part_P5_LP3
+	
+	
+[Part: Top_Part_P5_LP1]
+	
+	Height		: 4 % Page
+	Width		: 40 % Page
+	Border		: thin box
+	Line		: Top_Part_P5_LP_L1
+	
+[Line: Top_Part_P5_LP_L1]
+	
+	Space Top	: 1
+	Field		: Top_Part_P5_LP_L1_Fi1
+	
+[Field: Top_Part_P5_LP_L1_Fi1]
+	
+	Set as		: "PRODUCT ITEMS OF SERVICES"
+	Align		: Center
+	Full Width	: Yes
+	Style		: Normal Bold
+	
+[Part: Top_Part_P5_LP2]
+	
+	Height		: 4 % Page
+	Width		: 15 % Page
+	Border		: thin box
+	Line		: Top_Part_P5_LP2_L1
+	
+[Line: Top_Part_P5_LP2_L1]
+	
+	Space Top	: 1
+	Field		: Top_Part_P5_LP2_L1_Fi1
+	
+[Field: Top_Part_P5_LP2_L1_Fi1]
+	
+	Set as		: "HSN CODE"
+	Align		: Center
+	Full Width	: Yes
+	Style		: Normal Bold
+	
+[Part: Top_Part_P05_LP3]
+	
+	Height		: 4 % Page
+	Width		: 5 % Page
+	Border		: thin box
+	Line		: Top_Part_P05_LP3_L1
+	
+[Line: Top_Part_P05_LP3_L1]
+	
+	Space Top	: 1
+	Field		: Top_Part_P05_LP3_L1_Fi1
+	
+[Field: Top_Part_P05_LP3_L1_Fi1]
+	
+	Set as		: "QTY"
+	Align		: Right
+	Full Width	: Yes
+	Style		: Normal Bold
+	
+[Part: Top_Part_P5_RP1]
+	
+	Height		: 4 % Page
+	Width		: 10 % Page
+	Border		: thin box
+	Line		: Top_Part_P5_RP1_L1
+	
+[Line:Top_Part_P5_RP1_L1]
+	
+	Space Top	: 1
+	Field		: Top_Part_P5_RP1_L1_Fi1
+	
+[Field: Top_Part_P5_RP1_L1_Fi1]
+	
+	Set as		: "UNITS"
+	Align		: Center
+	Full Width	: Yes
+	Style		: Normal Bold
+	
+[Part: Top_Part_P5_RP2]
+	
+	Height		: 4 % Page
+	Width		: 15 % Page
+	Border		: thin box
+	Line		: Top_Part_P5_RP2_L1
+	
+[Line: Top_Part_P5_RP2_L1]
+	
+	Space Top	: 1
+	Field		: Top_Part_P5_RP2_L1_Fi1
+	
+[Field: Top_Part_P5_RP2_L1_Fi1]
+	
+	Set as		: "RATE"
+	Align		: Center	
+	Full Width	: Yes
+	Style		: Normal Bold
+	
+[Part:Top_Part_P5_LP3]
+	
+	Height		: 4 % Page
+	Width		: 15 % Page
+	Border		: thin box
+	Line		: Top_Part_P5_LP3_L1
+	
+[Line:Top_Part_P5_LP3_L1]
+	
+	Space Top	: 1
+	Field		: Top_Part_P5_LP3_L1_Fi1
+	
+[Field: Top_Part_P5_LP3_L1_Fi1]
+	
+	Set as		: "AMOUNT"
+	Align		: Center
+	Full Width	: Yes
+	Style		: Normal Bold
+	
+[Part: Top_Part_P6]
+	
+	Left Part	: Top_Part_P6_LP1,Top_Part_P6_LP2,Top_part_P6_LP3,Top_Part_P6_LP4
+	Right Part	: Top_Part_P6_RP1,Top_Part_P6_RP2
+	
+[Part: Top_Part_P6_LP1]	
+	
+	Height		: 40 % Page
+	Width		: 40 % Page
+;	Border		: thin box
+	Line		: Top_Part_P6_L1,Top_Part_P6_L2,Top_Part_P6_L3,Top_Part_P6_L4,Top_Part_P6_L05,Top_Part_P6_L6,Top_Part_P6_L7,Top_Part_P6_L8,Top_Part_P6_L9
+;    Bottom Line : border line
+	
+
+[Line: Top_Part_P6_L1]
+	
+	Space Top	: 1
+	Field		:Top_Part_P6_L1_Fi1 
+	
+[Field: Top_Part_P6_L1_Fi1]
+	
+	Set as		: "DESCRIPTION"
+	Align		: Left
+	Full Width	: Yes
+	
+[Line: Top_Part_P6_L2]
+	
+	Space Top	: 1
+	Field		: Top_Part_P6_L2_Fi2
+	
+[Field:  Top_Part_P6_L2_Fi2]
+	
+	Set as		: "VIVO MOBILE"
+	Align		: Left
+	Full Width	: Yes
+	
+[Line: Top_Part_P6_L3]
+	
+	Space Top	: 1
+	Field		: Top_Part_P6_L3_Fi3
+	
+	
+[Field: Top_Part_P6_L3_Fi3]
+	
+	Set as		: "LED-LIGHT"
+	Align		: Left
+	Full Width	: Yes
+	
+[Line: Top_Part_P6_L4]
+	
+	Space Top	: 1
+	Field		: Top_Part_P6_L4_Fi4
+	Border		: thin bottom
+	
+[Field: Top_Part_P6_L4_Fi4]
+	
+	Set as		: "PENAL"
+	Align		: Left
+	Full Width	: Yes
+	
+[Line:Top_Part_P6_L05]
+	
+	Space Top	: 1
+	Field		: Top_Part_P6_L05_L5_Fi5
+	Border		: thin bottom
+	
+[Field: Top_Part_P6_L05_L5_Fi5]
+	
+	Set as		: "TOTAL"
+	Align		: Left
+	Full Width	: Yes
+	Style		: Normal Bold
+	
+[Line:  Top_Part_P6_L6]
+	
+	Space Top	: 2.78
+	Field		: Top_Part_P6_L6_Fi6
+
+[Field:   Top_Part_P6_L6_Fi6]
+	
+	Set as		: "LOAN CALCULATION 20%"
+	Align		: Left
+	Full Width	: Yes
+	
+[Line: Top_Part_P6_L7]
+	
+	Space Top	: 2
+	Field		: Top_Part_P6_L7_Fi7 
+	
+[Field: Top_Part_P6_L7_Fi7]
+	
+    Border: Thick Box01
+	Set as		: "TAX INVOICEBLE"
+	Align		: Left
+	Full Width	: Yes
+	Style		: Normal Bold
+	
+[Border: Thick Box01]
+
+    Top         : Thick, Full Length
+    Bottom      : Thick, Full Length
+;;    Left        : Thick
+;;    Right       : Thick
+
+[Line: Top_Part_P6_L8]
+	
+	Space Top	: 2
+	Field		: Top_Part_P6_L8_Fi8
+	
+[Field: Top_Part_P6_L8_Fi8]
+
+	Set as		: "Input CGST@ 9%"
+	Align		: Left
+	Full Width	: Yes
+	
+[Line: Top_Part_P6_L9]
+	
+	Space Top	: 1
+	Field		: Top_part_P6_L9_Fi9
+	
+[Field: Top_part_P6_L9_Fi9]
+	
+	Set as		: "Input SGST@ 9%"
+	Align		: Left
+	Full Width	: Yes
+	Style       : Small Bold
+	
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+				
+[Part: Top_Part_P6_LP2]
+	
+	Height		: 40 % Page
+	Width		: 15 % Page
+	Border		: thin box
+	Line		: Top_Part_P6_LP2_L1,Top_Part_P6_LP2_L2,Top_Part_P6_LP2_L3
+	
+[Line: Top_Part_P6_LP2_L1]
+	
+	Space Top	: 3
+	Field		: Top_Part_P6_LP2_L1_Fi1
+	
+[Field: Top_Part_P6_LP2_L1_Fi1]
+
+	Set as		: "8517"
+	Align		: Center
+	Full Width	: Yes
+	
+[Line: Top_Part_P6_LP2_L2]
+	
+	Space Top	: 1
+	Field		: Top_Part_P6_LP2_L2_Fi2
+	
+[Field: Top_Part_P6_LP2_L2_Fi2]
+	
+	Set as		: "85395000"
+	Align		: Center
+	Full Width	: Yes
+	
+[Line: Top_Part_P6_LP2_L3]
+	
+	Space Top	: 1
+	Field		: Top_Part_P6_LP2_L3_Fi3
+	
+
+[Field: Top_Part_P6_LP2_L3_Fi3]
+	
+	Set as		: "9608"
+	Align		: Center
+	Full Width	: Yes
+	
+[Part: Top_part_P6_LP3]
+	
+	Height		:40 % Page
+	Width		: 5 % Page
+	Border		: thin box
+	Line		:Top_part_P6_LP3_L1,Top_Part_P6_LP3_L2,Top_Part_P6_LP3_l3
+	
+[Line: Top_part_P6_LP3_L1]
+	
+	Space Top	: 3
+	Field		: Top_part_P6_LP3_L1_Fi1
+	
+[Field: Top_part_P6_LP3_L1_Fi1]
+	
+	Set as		: "5"
+	Align		: Center
+	Full Width	: Yes
+	
+[Line: Top_Part_P6_LP3_L2]
+	
+	Space Top	: 1
+	Field		: Top_Part_P6_LP3_L2_Fi2
+	
+[Field:  Top_Part_P6_LP3_L2_Fi2]
+	
+	Set as		: "10"
+	Align		: Center
+	Full Width	: Yes
+	
+[Line: Top_Part_P6_LP3_l3]
+	
+	Space Top	: 1
+	Field		: Top_Part_P6_LP3_l3_Fi3 
+	
+[Field: Top_Part_P6_LP3_l3_Fi3]
+	
+	Set as		: "6"
+	Align		: Center
+	Full Width	: Yes
+	
+[Part: Top_Part_P6_LP4]
+	
+	Height		: 40 % Page
+	Width		: 10 % Page
+	Border		: thin box
+	Line		: Top_Part_P6_LP4_L1,Top_Part_P6_LP4_L2,Top_Part_P6_LP4_L3
+	
+[Line: Top_Part_P6_LP4_L1]
+	
+	Space Top	: 3
+	Field		: Top_Part_P6_LP4_L1_Fi1
+	
+[Field: Top_Part_P6_LP4_L1_Fi1]
+	
+	Set as		: "1"
+	Align		: Center
+	Full Width	: Yes
+	
+[Line: Top_Part_P6_LP4_L2]
+	
+	Space Top	: 1
+	Field		: Top_Part_P6_LP4_L2_Fi2
+	
+[Field: Top_Part_P6_LP4_L2_Fi2]
+	
+	Set as		: "5"
+	Align		: Center
+	Full Width	: Yes
+	
+[Line: Top_Part_P6_LP4_L3]
+	
+	Space Top	: 1
+	Field		: Top_Part_P6_LP4_L3_Fi3
+	
+[Field: Top_Part_P6_LP4_L3_Fi3]
+	
+	Set as		: "5"
+	Align		: Center
+	Full Width	: Yes
+	
+[Part: Top_Part_P6_RP1]
+	
+	Height		: 40 % Page
+	Width		: 15 % Page
+	Border		: thin box
+	Line		: Top_Part_P6_RP1_L1,Top_Part_P6_RP1_L2,Top_Part_P6_RP1_L3,Top_Part_P6_RP1_L4,Top_part_P6_RP1_L5
+	
+[Line: Top_Part_P6_RP1_L1]
+	
+	Space Top	: 3
+	Field		: Top_Part_P6_RP1_L1_Fi1
+	
+[Field: Top_Part_P6_RP1_L1_Fi1]
+	
+	Set as		: "20,000"
+	Align		: Center
+	Full Width	: Yes
+	
+[Line: Top_Part_P6_RP1_L2]
+	
+	Space Top	: 1
+	Field		: Top_Part_P6_RP1_L2_Fi2
+	
+[Field: Top_Part_P6_RP1_L2_Fi2]
+	
+	Set as		: "1,500"
+	Align		: Center
+	Full Width	: Yes
+	
+[Line: Top_Part_P6_RP1_L3]
+	
+	Space Top	: 1
+	Field		: Top_Part_P6_RP1_L3_Fi3
+	
+[Field: Top_Part_P6_RP1_L3_Fi3]
+	
+	Set as		: "2,000"
+	Align		: Center
+	Full Width	: Yes
+	
+[Line: Top_Part_P6_RP1_L4]
+	
+	Space Top	: 10.48
+	Field		:  Top_Part_P6_RP1_L4_Fi4
+	
+[Field: Top_Part_P6_RP1_L4_Fi4]
+	
+	Set as		: "9%"
+	Align		: Center
+	Full Width	: Yes
+	
+[Line: Top_part_P6_RP1_L5]
+	
+	Space Top	: 1
+	Field		: Top_part_P6_RP1_L5_Fi5
+	
+[Field: Top_part_P6_RP1_L5_Fi5]
+	
+	Set as		: "9%"
+	Align		: Center
+	Full Width	: Yes
+		
+[Part: Top_Part_P6_RP2]
+	
+	Height		: 40 % Page
+	Width		: 15 % Page
+	Border		: thin box
+	Line		: Top_Part_P6_RP2_L1,Top_Part_P6_RP2_L2,Top_Part_P6_RP2_L3,Top_Part_P6_RP2_L4,Top_Part_P6_RP2_L5,Top_part_P6_RP2_L6,Top_Part_P6_RP2_L7,Top_Part_P6_RP2_L8
+	
+[Line: Top_Part_P6_RP2_L1]
+	
+	Space Top	: 3
+	Field		: Top_Part_P6_RP2_L1_Fi1
+	
+[Field: Top_Part_P6_RP2_L1_Fi1]
+	
+	Set as		: "100,000"
+	Align		: Right
+	Full Width	: Yes
+	
+[Line: Top_Part_P6_RP2_L2]
+	
+	Space Top	: 1
+	Field		: Top_Part_P6_RL2_Fi2
+	
+[Field: Top_Part_P6_RL2_Fi2]
+	
+	Set as		: "7,500"
+	Align		: Right
+	Full Width	: Yes
+	
+[Line: Top_Part_P6_RP2_L3]
+	
+	Space Top	: 1
+	Field		: Top_Part_P6_RP2_L3_Fi3
+	Border		: thin bottom
+	
+[Field: Top_Part_P6_RP2_L3_Fi3]
+	
+	Set as		: "12,000"
+	Align		: Right
+	Full Width	: Yes
+	
+[Line: Top_Part_P6_RP2_L4]
+	
+	Space Top	: 1
+	Field		: Top_Part_P6_RP2_L4_Fi4
+	Border		: thin bottom
+
+[Field: Top_Part_P6_RP2_L4_Fi4]
+	
+	Set as		: "119,500"
+	Align		: Right
+	Full Width	: Yes
+	Style		: Normal Bold
+	
+[Line: Top_Part_P6_RP2_L5]
+	
+	Space Top	: 2.78
+	Field		: Top_Part_P6_RP2_L5_Fi5
+	
+[Field: Top_Part_P6_RP2_L5_Fi5]
+	
+	Set as		: "95,600"
+	Align		: Right
+	Full Width	: Yes
+	
+[Line: Top_part_P6_RP2_L6]
+	
+	Space Top	: 2
+	Field		: Top_part_P6_RP2_L6
+	
+[Field: Top_part_P6_RP2_L6]
+	
+	Border		: Thick Box02
+	Set as		: "87,543"
+	Align		: Right
+	Full Width	: Yes
+	Style		: Normal Bold
+	
+[Line: Top_Part_P6_RP2_L7]
+	
+	Space Top	: 2
+	Field		: Top_Part_P6_RP2_L7_Fi7
+	
+[Field: Top_Part_P6_RP2_L7_Fi7]
+	
+	Set as		: "422,143"
+	Align		: Right
+	Full Width	: Yes
+	
+[Line: Top_Part_P6_RP2_L8]
+	
+	Space Top	: 1
+	Field		: Top_Part_P6_RP2_L8_Fi8
+	
+[Field: Top_Part_P6_RP2_L8_Fi8]
+	
+	Set as		: "422,143"
+	Align		: Right
+	Full Width	: Yes
+	
+[Border: Thick Box02]
+
+    Top         : Thick, Full Length
+    Bottom      : Thick, Full Length
+	
+[Part: Bottom_Part_p1]
+	
+	Left Part	: Bottom_part_P1_LP1
+	
+
+[Part: Bottom_part_P1_LP1]
+	
+	Height		: 20 % Page
+	Width		: 100 % Page
+	Border		: thin box
+	Line		: Bottom_part_P1_LP1_L1,Bottom_part_P1_LP1_L2,Bottom_part_P1_LP1_L3,Bottom_part_P1_LP1_L4,Bottom_part_P1_LP1_L5
+	
+[Line: Bottom_part_P1_LP1_L1]
+	
+	;Space Top	: 1
+	Field		: Bottom_part_P1_LP1_L1_Fi1,Bottom_part_P1_LP1_L1_Fi2
+	Border		: thin bottom
+	
+[Field: Bottom_part_P1_LP1_L1_Fi1]
+	
+	Set as		: "TOTAL"
+	Align		: Left
+	Full Width	: Yes
+	Style		: Normal Bold
+	
+[Field: Bottom_part_P1_LP1_L1_Fi2]
+	
+	Set as		: "69883.000"
+	Align		: Right
+	Space Left	: 6.95 % Page
+	;Full Width	: Yes
+	;Border		: thin bottom
+	Border		: Thick Left001
+	
+[Border: Thick Left001]
+
+    Left        : Thick
+	
+[Line: Bottom_part_P1_LP1_L2]
+	
+	Space Top	: 1
+	Field		: Bottom_part_P1_LP1_L2_Fi2
+	
+[Field: Bottom_part_P1_LP1_L2_Fi2]
+	
+	Set as		: "INR-SIXTY-NINE THOUSAND EIGHT HUNDRED EIGHTY-THREE ONLY"
+	Align		: Left
+	Full Width	: Yes
+	
+[Line: Bottom_part_P1_LP1_L3]
+	
+	Space Top	: 1
+	Field		: Bottom_part_P1_LP1_L3_Fi3,Bottom_part_P1_LP1_L3_Fi4
+	
+[Field: Bottom_part_P1_LP1_L3_Fi3]
+	
+	Set as		: "Comapany Pan Alltaration (D)"
+	Align		: Left
+	Full Width	: Yes
+	
+[Field: Bottom_part_P1_LP1_L3_Fi4]
+	
+	Set as		: " FOR SIGNATURE"
+	Align		: Right
+	Full Width	: Yes
+	
+[Line: Bottom_part_P1_LP1_L4]
+	
+	Space Top	: 3
+	Field		: Bottom_part_P1_LP1_L4_Fi4
+	
+[Field: Bottom_part_P1_LP1_L4_Fi4]
+	
+	Set as		: "THANK YOU,VISIT AGAIN"
+	Align		: Left
+	Full Width	: Yes
+	
+[Line: Bottom_part_P1_LP1_L5]
+	
+	Space Top	: 2
+	Field		: Bottom_part_P1_LP1_L5_Fi5
+	Border		: thin bottom
+	
+[Field: Bottom_part_P1_LP1_L5_Fi5]
+	
+	Set as		: " AUTHORIZED SIGNATURE"
+	Align		: Right
+	Full Width	: Yes
+	
+;[Part: Bottom_part_P2]
+;	
+;	Height		: 1 % Page
+;	Width		: 100 % Page
+;	Border		: thin bottom
+;	Line		: Bottom_Part_P2_L1
+;	
+;[Line: Bottom_Part_P2_L1]
+	
+	;pace Top	: 1
+;	Field		: Bottom_Part_P2_L1_Fi1
+;	
+;[Field: Bottom_Part_P2_L1_Fi1]
+	
+	
+
+
+	
+	
+	
+	
+
+	
+
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+
+	
