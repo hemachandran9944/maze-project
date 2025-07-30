@@ -125,7 +125,7 @@
 	
 [Field: Top_Part_P02_L1_Fi1]
 	
-	Set as		: $Name:Company:##svCurrentCompany;"JAS Electranic Pvt Ltd."
+	Set as		: $Name:Company:##svCurrentCompany;"JAS EElectranic Pvt Ltd."
 	Style		: large bold	
 	Align		: Center
 	Full Width	: Yes
